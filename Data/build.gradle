@@ -1,0 +1,75 @@
+import com.mimarketplace.buildsrc.Libs
+
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+}
+
+android {
+    compileSdk 30
+
+    defaultConfig {
+        minSdk 22
+        targetSdk 30
+        versionCode 1
+        versionName "1.0"
+
+        //testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "com.mimarketplace.data.DataTestRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        debug {
+            buildConfigField "String", "BASE_URL", "\"https://api.mercadolibre.com\""
+            buildConfigField "String", "BASE_IMAGE_URL", "\"https://http2.mlstatic.com/\""
+        }
+        staging {
+            buildConfigField "String", "BASE_URL", "\"https://api.mercadolibre.com\""
+            buildConfigField "String", "BASE_IMAGE_URL", "\"https://http2.mlstatic.com/\""
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "BASE_URL", "\"https://api.mercadolibre.com\""
+            buildConfigField "String", "BASE_IMAGE_URL", "\"https://http2.mlstatic.com/\""
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+    //implementation Libs.Kotlin.stdlib
+
+    //Http Client dependencies
+    implementation Libs.SquareUp.okHttp
+    implementation Libs.SquareUp.moshiKotlin
+    implementation Libs.SquareUp.moshiAdapter
+
+    //Dagger Hilt dependencies
+    implementation Libs.DaggerHilt.hiltAndroid
+    implementation 'androidx.test.ext:junit-ktx:1.1.3'
+    kapt Libs.DaggerHilt.hiltCompiler
+    kapt Libs.DaggerHilt.hiltAndroidCompiler
+
+    testImplementation Libs.DaggerHilt.hiltAndroidTest
+    kaptTest Libs.DaggerHilt.hiltAndroidCompiler
+    //testAnnotationProcessor Libs.DaggerHilt.hiltAndroidCompiler
+
+    implementation project(':Domain')
+    testImplementation 'junit:junit:4.+'
+
+    androidTestImplementation 'androidx.test:runner:1.1.0'
+    androidTestUtil 'androidx.test:orchestrator:1.1.0'
+    //androidTestImplementation Libs.DaggerHilt.hiltAndroidTest
+    //androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    //androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+}

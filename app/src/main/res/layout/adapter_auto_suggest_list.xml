@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="clickListener"
+            type="android.view.View.OnClickListener"/>
+        <variable
+            name="suggest"
+            type="com.mimarketplace.domain.autosuggest.models.Suggest"/>
+    </data>
+<RelativeLayout android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="6dp"
+    android:paddingBottom="6dp"
+    android:onClick="@{clickListener}">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/auto_suggest_image_layout"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:gravity="center"
+        android:background="@drawable/rounded_image">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/auto_suggest_image"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerInParent="true"
+            app:srcCompat="@drawable/ic_baseline_search_24"/>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+    <TextView
+        android:id="@+id/auto_suggest_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="8dp"
+        android:layout_toRightOf="@+id/auto_suggest_image_layout"
+        android:text="@{suggest.q}"
+        android:textColor="@color/textColor2"
+        android:textSize="12sp" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/auto_suggest_next_imageEnd"
+        android:layout_width="12dp"
+        android:layout_height="12dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerInParent="true"
+
+        app:srcCompat="@drawable/ic_baseline_arrow_forward_ios_24"/>
+
+</RelativeLayout>
+</layout>

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="clickListener"
+            type="android.view.View.OnClickListener"/>
+        <variable
+            name="item"
+            type="com.mimarketplace.domain.item.models.Item"/>
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="8dp"
+    android:onClick="@{clickListener}">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/item_ImageView"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/title_TextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:maxLines="4"
+        android:text="@{item.title}"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/item_ImageView"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintHorizontal_bias="0.0"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/price_TextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:gravity="left"
+        android:maxLines="4"
+        android:text="@{@string/price_format(item.price)}"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/priceOff_TextView"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toRightOf="@+id/item_ImageView"
+        app:layout_constraintStart_toEndOf="@+id/item_ImageView"
+        app:layout_constraintTop_toBottomOf="@+id/title_TextView"
+        app:layout_constrainedWidth="true" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/priceOff_TextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:gravity="left"
+        android:maxLines="4"
+        android:text="32% OFF"
+        android:textColor="@color/color_1"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/price_TextView"
+        app:layout_constraintTop_toTopOf="@+id/price_TextView" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/installments_TextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="left"
+        android:maxLines="4"
+        android:text="en 36x $24.664"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/item_ImageView"
+        app:layout_constraintTop_toBottomOf="@+id/price_TextView"
+        app:layout_constrainedWidth="true" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/description_TextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:maxLines="4"
+        android:text="Envío gratis"
+        android:textColor="@color/color_1"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/item_ImageView"
+        app:layout_constraintTop_toBottomOf="@+id/installments_TextView"
+        app:layout_constrainedWidth="true" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

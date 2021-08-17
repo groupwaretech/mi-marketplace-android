@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FFF3D9</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="cursorAccent">#FF03DAC5</color>
+    <color name="controlNormal">#FF018786</color>
+    <color name="controlActivated">#0d6200EE</color>
+
+    <color name="textColor">#444444</color>
+
+    <color name="textColor2">#B1B1B1</color>
+
+    <color name="white_500">#FEEBA0</color>
+
+    <color name="color_1">#8155BA</color>
+    <color name="color_2">#4120A9</color>
+
+    <color name="line">#EAE7FA</color>
+
+
+</resources>
