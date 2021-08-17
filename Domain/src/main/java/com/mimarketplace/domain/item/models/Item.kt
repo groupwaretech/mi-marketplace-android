@@ -5,6 +5,6 @@ data class Item(
     val title: String,
     val thumbnail_id: String?,
     val price: Double,
-    val shipping: Shipping,
-    val installments: Installment,
+    val shipping: Shipping?,
+    val installments: Installment?,
 )
