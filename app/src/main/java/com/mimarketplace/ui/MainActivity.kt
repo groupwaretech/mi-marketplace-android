@@ -4,25 +4,19 @@ package com.mimarketplace.ui
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatImageButton
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.mimarketplace.R
-import com.mimarketplace.domain.autosuggest.usecases.GetSuggestUseCase
 import com.mimarketplace.domain.category.models.MainCategory
-import com.mimarketplace.domain.category.usecases.GetCategoriesUseCase
 import com.mimarketplace.domain.item.models.Item
 import com.mimarketplace.ui.autosuggest.SearchBottomSheetDialog
 import com.mimarketplace.ui.category.fragments.CategoryFragment
 import com.mimarketplace.ui.item.ItemDatailActivity
 import com.mimarketplace.ui.item.fragments.ItemListFragment
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import javax.inject.Inject
+
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -37,12 +31,13 @@ class MainActivity : AppCompatActivity() {
         val searchBar = findViewById<ConstraintLayout>(R.id.search_bar)
         searchBar.setOnClickListener {
             val bottomSheet = SearchBottomSheetDialog(onSearch)
+            bottomSheet.q = searchTextView?.text.toString()
             bottomSheet.show(supportFragmentManager, "bottomSheet")
         }
 
         quitSearchImageButton = findViewById<AppCompatImageButton>(R.id.quit_search_ImageButton)
         quitSearchImageButton?.setOnClickListener {
-            searchTextView?.text = "Buscar..."
+            searchTextView?.text = ""
             quitSearchImageButton?.visibility = View.GONE
             toHome()
         }
@@ -75,3 +70,4 @@ class MainActivity : AppCompatActivity() {
         supportFragmentManager.beginTransaction().replace(R.id.frame, ItemListFragment.newInstance ("TEXT", it, onItemClick)).commit()
     }
 }
+

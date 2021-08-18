@@ -27,6 +27,9 @@ class ItemDatailActivity : AppCompatActivity() {
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_item_datail)
 
+        binding?.backMarlketplaceImageButton?.setOnClickListener {
+            finish()
+        }
         val itemId = intent.getStringExtra("itemId")
         subscribeUi(this, itemId)
     }

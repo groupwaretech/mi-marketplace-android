@@ -83,7 +83,7 @@
                 app:layout_constraintHorizontal_bias="0.0"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
-                android:text="Buscar..."
+                android:hint="Buscar..."
                 android:textColor="@color/textColor2"
                 android:textSize="12sp"/>
 
